@@ -1,0 +1,10 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="projects/kgui/kgui.vcxproj" Id="1cb8f097-a963-4be6-8954-5e6d4710d62c" />
+  <Project Path="projects/kgui_test/kgui_test.vcxproj" Id="54c2a96f-76fe-4a6f-ab82-a5e30d496237">
+    <BuildDependency Project="projects/kgui/kgui.vcxproj" />
+  </Project>
+</Solution>
