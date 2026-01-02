@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\KButton.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KCheckBox.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KChecked.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KColor.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KConfig.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KDraw.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KFloat2.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KFont.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KForm.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KGroupBox.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KHeight.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KLabel.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KMDIChild.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KMDIClient.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KMenu.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KMenuCommon.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KObject.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KParam.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KPopupMenu.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KPosX.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KPosY.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KSetGetStyle.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KString.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KText.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KTheme.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KTypes.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KWidth.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KWindow.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KWindowStyles.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\KButton.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\KCheckBox.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\KChecked.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\KDraw.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\KFont.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\KForm.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\KGroupBox.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\KHeight.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\KLabel.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\KMDIChild.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\KMDIClient.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\KMenu.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\KMenuCommon.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\KObject.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\KPopupMenu.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\KPosX.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\KPosY.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\KString.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\KText.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\KTheme.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\KWidth.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\KWindow.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

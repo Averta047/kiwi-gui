@@ -1,0 +1,194 @@
+//========= Copyright KiwiEngine, All rights reserved ============//
+//
+// Purpose: 
+//
+//================================================================//
+
+#include "KGroupBox.h"
+
+// Defines
+#define CLASS_NAME          TEXT("KGroupBox")
+#define WIN32_CLASS_NAME    TEXT("BUTTON")
+#define DEFAULT_TEXT        TEXT("Caption")
+
+#define DEFAULT_WIDTH  75
+#define DEFAULT_HEIGHT 25
+
+// Local Memory
+int KGroupBox::m_IndexPool = 1;
+
+// Prototypes
+LRESULT CALLBACK ChildWindProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam, UINT_PTR uIdSubclass, DWORD_PTR dwRefData);
+
+KGroupBox::KGroupBox(KWindow* pParent, int PosX, int PosY)
+    :
+    KWindow(
+        pParent, 
+        PosX, 
+        PosY
+    )
+{
+    this->m_Name = CLASS_NAME;
+
+    this->m_sWindowArgs.dwExStyle = 0;
+    this->m_sWindowArgs.lpClassName = WIN32_CLASS_NAME;
+    this->m_sWindowArgs.lpWindowName = DEFAULT_TEXT;
+    this->m_sWindowArgs.dwStyle = WS_VISIBLE | WS_CHILD | BS_GROUPBOX | BS_NOTIFY;
+    this->m_sWindowArgs.nWidth = DEFAULT_WIDTH;
+    this->m_sWindowArgs.nHeight = DEFAULT_HEIGHT;
+    this->m_sWindowArgs.hMenu = reinterpret_cast<HMENU>(this->m_ID);;
+    this->m_sWindowArgs.lpParam = this;
+
+    this->Create();
+
+    BOOL fResult = SetWindowSubclass(this->m_hWinHandle, ChildWindProc, 0, (DWORD_PTR)this);
+
+    if (FALSE == fResult) {
+        MSG_ERROR(TEXT("SetWindowSubclass failed with error = 0x%X"), GetLastError());
+    }
+}
+
+KGroupBox::~KGroupBox()
+{
+}
+
+int KGroupBox::GetDebugIndex()
+{
+    int dReturn = this->m_IndexPool;
+    this->m_IndexPool++;
+    return dReturn;
+}
+
+LRESULT KGroupBox::ProcessCommandMessage(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+    LRESULT tResult = 0; // should return 1 if not used (no CB registered)
+
+#if 0
+    switch (uMsg)
+    {
+    case WM_CTLCOLORSTATIC:
+    {
+        HDC hdcStatic = (HDC)wParam;
+        SetBkMode(hdcStatic, TRANSPARENT);
+        SetTextColor(hdcStatic, GetSysColor(COLOR_WINDOWTEXT));
+
+        // Use the same background color as the window
+        HBRUSH hbrBackground = GetSysColorBrush(COLOR_WINDOW);
+        return (INT_PTR)hbrBackground;
+    }
+    default:
+        MSG_ERROR(TEXT("Not supported %X"), uMsg);
+        break;
+    }
+
+    if (LOWORD(a_wParam) == reinterpret_cast<WORD>(this->m_id)) {
+        switch (HIWORD(a_wParam)) {
+        case BN_CLICKED:
+            MSG_LOG(TEXT("BN_CLICKED"));
+            if (nullptr != OnClick) {
+                OnClick(this, { a_uMsg, a_wParam, a_lParam });
+            }
+            tResult = 1;
+            break;
+        case BN_PAINT:
+            MSG_LOG(TEXT("BN_PAINT"));
+            if (nullptr != OnPaint) {
+                OnPaint(this, { a_uMsg, a_wParam, a_lParam });
+            }
+            tResult = 1;
+            break;
+        case BN_HILITE: //PUSHED
+            MSG_LOG(TEXT("PUSHED"));
+            if (nullptr != OnPushed) {
+                OnPushed(this, { a_uMsg, a_wParam, a_lParam });
+            }
+            tResult = 1;
+            break;
+        case BN_UNHILITE: //UNPUSHED
+            MSG_LOG(TEXT("UNPUSHED"));
+            if (nullptr != OnUnpushed) {
+                OnUnpushed(this, { a_uMsg, a_wParam, a_lParam });
+            }
+            tResult = 1;
+            break;
+        case BN_DISABLE:
+            MSG_LOG(TEXT("BN_DISABLE"));
+            if (nullptr != OnDisable) {
+                OnDisable(this, { a_uMsg, a_wParam, a_lParam });
+            }
+            tResult = 1;
+            break;
+        case BN_DOUBLECLICKED:
+            MSG_LOG(TEXT("BN_DOUBLECLICKED"));
+            if (nullptr != OnDoubleClicked) {
+                OnDoubleClicked(this, { a_uMsg, a_wParam, a_lParam });
+            }
+            tResult = 1;
+            break;
+        case BN_SETFOCUS:
+            MSG_LOG(TEXT("BN_SETFOCUS"));
+            if (nullptr != OnSetFocus) {
+                OnSetFocus(this, { a_uMsg, a_wParam, a_lParam });
+            }
+            tResult = 1;
+            break;
+        case BN_KILLFOCUS:
+            MSG_LOG(TEXT("BN_KILLFOCUS"));
+            if (nullptr != OnKillFocus) {
+                OnKillFocus(this, { a_uMsg, a_wParam, a_lParam });
+            }
+            tResult = 1;
+            break;
+        default:
+            MSG_ERROR(TEXT("Not supported %X"), a_uMsg);
+            break;
+        }
+    }
+    else {
+        //search through children
+        thWindow* pFoundChildren = findChildrenByID(LOWORD(a_wParam));
+
+        if (pFoundChildren) {
+            tResult = pFoundChildren->processCommandMessage(a_hwnd, a_uMsg, a_wParam, a_lParam);
+        }
+        else {
+            //tResult = this->onDefaultProc(a_hwnd, a_uMsg, a_wParam, a_lParam);
+        }
+    }
+#endif
+
+    return tResult;
+}
+
+LRESULT KGroupBox::ProcessNotifyMessage(HWND hWnd, UINT _uMsg, WPARAM wParam, LPARAM lParam)
+{
+    //TH_ENTER_OBJECT_FUNCTION;
+    LRESULT tResult = 0;
+    NMHDR* pData = reinterpret_cast<NMHDR*>(lParam);
+
+
+#if 0
+    if (pData) {
+        switch (pData->code) {
+        case BCN_DROPDOWN:
+            MSG_LOG(TEXT("BCN_DROPDOWN - %s"), this->m_Name.c_str());
+            tResult = 1;
+            break;
+        case BCN_HOTITEMCHANGE: //mouse is enetring button window
+            MSG_LOG(TEXT("BCN_HOTITEMCHANGE - %s"), this->m_Name.c_str());
+            tResult = 1;
+            break;
+        case NM_CUSTOMDRAW:
+            MSG_LOG(TEXT("LNM_CUSTOMDRAW - %s"), this->m_Name.c_str());
+            tResult = 1;
+            break;
+        default:
+            MSG_ERROR(TEXT("WM_NOTIFY: hwndFrom=0x%X, idFrom=%d, code=0x%X"), pData->hwndFrom, pData->idFrom, pData->code);
+            break;
+        }
+    }
+#endif
+
+    //TH_LEAVE_OBJECT_FUNCTION;
+    return tResult;
+}
